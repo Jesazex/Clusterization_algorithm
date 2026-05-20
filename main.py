@@ -1,8 +1,9 @@
-def clusterization(filename, radius=1):
+def clusterization(filename):
     from math import dist
 
     clusters = [[] for _ in range(10**4)]
     data = [[float(i) for i in l.split()] for l in open(filename)]
+    radius = max(min(dist(i, j) for i in data if i != j) for j in data)
 
     def f(x, n):
         for p in data:
